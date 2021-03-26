@@ -2,16 +2,15 @@ import Head from 'next/head'
 import Layout from '../components/Layout'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+export default function Books() {
 
   return (
     <Layout>
       <Head>
-        <title>Book Club App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>BOOKS — Book Club App</title>
       </Head>
       <div id='book-list'>
-        
+
       </div>
     </Layout>
   )
