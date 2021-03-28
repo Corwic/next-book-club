@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Layout from '../components/Layout'
-import styles from '../styles/Home.module.css'
+import List from '../components/List'
 
 export default function Readers() {
 
@@ -9,9 +9,7 @@ export default function Readers() {
       <Head>
         <title>READERS — Book Club App</title>
       </Head>
-      <div id='readers-list'>
-
-      </div>
+      <List type="readers" input />
     </Layout>
   )
 }

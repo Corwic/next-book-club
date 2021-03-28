@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import Layout from '../components/Layout'
-import styles from '../styles/Home.module.css'
 
 export default function Home() {
 
@@ -11,7 +10,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div id='book-list'>
-        
+
       </div>
     </Layout>
   )
