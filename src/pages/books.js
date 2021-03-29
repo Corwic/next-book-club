@@ -1,17 +1,17 @@
 import Head from 'next/head'
 import Layout from '../components/Layout'
-import styles from '../styles/Home.module.css'
+import List from '../components/List'
+
 
 export default function Books() {
-
   return (
     <Layout>
       <Head>
         <title>BOOKS — Book Club App</title>
       </Head>
-      <div id='book-list'>
-
-      </div>
+      <List type="books" filter='reading' />
+      <List type="books" filter='toRead' input />
+      <List type="books" filter='read' />
     </Layout>
   )
 }
