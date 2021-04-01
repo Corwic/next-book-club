@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components';
 import key from 'weak-key'
 
-import books from '../data/books.json'
+//import books from '../data/books.json'
 import BookCard from './BookCard'
 import ReaderCard from './ReaderCard'
 import Input from './Input'
@@ -30,10 +30,10 @@ const cardComponents = {
   books: BookCard,
   readers: ReaderCard
 }
-const lists = {
+/*const lists = {
   books,
   readers: [{name: 'Anton'}]
-}
+}*/
 const listNames = {
   toRead: 'To read list',
   read: 'Read',
@@ -47,9 +47,9 @@ const conditions = {
   all: i => i.name
 }
 
-export default function List({ type = 'books', filter = 'all', input }) {
+export default function List({ data, type = 'books', filter = 'all', input }) {
   const Card = cardComponents[ type ]
-  const listData = lists[ type ]
+  //const listData = lists[ type ]
   const listHeader = type === 'books'
                       ? listNames[ filter ]
                       : listNames[ type ]
@@ -63,8 +63,8 @@ export default function List({ type = 'books', filter = 'all', input }) {
           ? <Input placeholder={`Add a ${type.slice(0, -1)}`}/>
           : ''
       }
-      {listData.length
-          ? listData.map(item => {
+      {data && data.length
+          ? data.map(item => {
               if (filterCondition(item))
                 return <li key={key(item)}><Card data={item} /></li>
             })
