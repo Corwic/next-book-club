@@ -26,7 +26,7 @@ const NavBtn = styled.li`
 
 export default function Header() {
   const { pathname } = useRouter()
-  console.log( pathname );
+  //console.log( pathname );
     return (
         <HeaderStyle>
           <h1><Link href="/">BOOK CLUB ДОС(ТЛ)УГ</Link></h1>

@@ -1,34 +1,34 @@
-import React, { useState, useEffect } from 'react'
-import usePost from '../hooks/usePost'
-
+import React, { useEffect } from 'react'
 import Router from 'next/router'
 import Head from 'next/head'
 import Layout from '../components/Layout'
 import List from '../components/List'
 
+import { useDispatch } from 'react-redux'
+import booksSlice, { fetchBooks } from '../redux/booksSlice'
 
-export default function Books({ booksData }) {
-  const [ inputValue, setInputValue ] = useState( '' )
-  const { addItem } = usePost( inputValue, 'books' )
+
+
+export default function Books(/*{ booksData }*/) {
+  const dispatch = useDispatch()
+  const { books } = booksSlice()
 
   useEffect(() => {
-      if ( !addItem ) return
-      Router.reload()
-  }, [ addItem ])
+    dispatch( fetchBooks )
+  }, [])
 
   return (
     <Layout>
       <Head>
         <title>BOOKS — Book Club App</title>
       </Head>
-      <List data={ booksData } type="books" filter='reading' />
-      <List data={ booksData } type="books" filter='toRead' input
-        onAdd={ setInputValue } />
-      <List data={ booksData } type="books" filter='read' />
+      <List data={ books } type="books" filter='reading' />
+      <List data={ books } type="books" filter='toRead' input />
+      <List data={ books } type="books" filter='read' />
     </Layout>
   )
 }
-
+/*
 export async function getStaticProps() {
   // Call an external API endpoint to get posts.
   // You can use any data fetching library
@@ -45,3 +45,4 @@ export async function getStaticProps() {
     },
   }
 }
+*/
