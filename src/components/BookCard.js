@@ -21,7 +21,10 @@ export default function BookCard ({ data: book }) {
   return (
   <BookCardStyle>
     <span>
-      <strong>{book.title}</strong> — {book.author?.name}
+    {!book.title
+        ? <>{ book.author_n_title }</>
+        : <>{ book.author } — <strong>{ book.title }</strong></>
+    }
     </span>
     <button onClick = { () => kill( book._id ) }> × </button>
   </BookCardStyle>

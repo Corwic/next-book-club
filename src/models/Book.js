@@ -8,35 +8,26 @@ const BookSchema = new mongoose.Schema({
   required: [true, 'Please provide a name for this Book.'],
   maxlength: [20, 'Name cannot be more than 60 characters'],
 },*/
-    "id": { type: Number },
-    "title": { type: String },
-    "author": {
-      "id": { type: Number },
-      "name": { type: String }
-    },
-    "image_url": { type: String },
-    "small_image_url": { type: String },
-    "goodreads": {
-      "id": { type: Number, maxlength: [10] }, // 6 digits
-      "books_count": { type: Number },
-      "ratings_count": { type: Number },
-      "text_reviews_count": { type: Number },
-      "original_publication_year": { type: Number, maxlength: [4] }, // 4 digits
-      "original_publication_month": { type: Number },
-      "original_publication_day": { type: Number },
-      "average_rating": { type: Number }
-    },
-    "club": {
-      "id": { type: Number },
-      "initiator_id": { type: Number },
-      "votes": { type: Number },
-      "reading": { type: Boolean },
-      "rating": { type: Number },
-      "meeting_date": { type: Date },
-      "meeting_involved": { type: Array },
-      "meeting_notes": { type: String },
-      "notes": { type: String }
-    }
+
+  "author_n_title": { type: String },
+  "initiator_id": { type: Number },
+
+  "author": { type: String },
+  "title": { type: String },
+  "year": { type: Number },
+  "book_goodreads_id": { type: Number },
+  "author_goodreads_id": { type: Number },
+
+  "votes": { type: Array },
+  "votes_avg": { type: Number },
+
+  "reading": { type: Boolean },
+  "meeting_date": { type: Date },
+  "meeting_involved": { type: Array },
+  "meeting_notes": { type: String },
+  "rating": { type: Array },
+  "rating_avg": { type: Number },
+  "review": { type: String }
 })
 
 export default mongoose.models.Book || mongoose.model('Book', BookSchema)

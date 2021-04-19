@@ -36,9 +36,11 @@ const listNames = {
   readers: 'Club members'
 }
 const conditions = {
-  toRead: i => !i?.club?.votes,
-  read: i => i.club?.votes && !i.club.reading,
-  reading: i => i?.club?.reading,
+  // for books
+  toRead: i => !i.votes.length,
+  read: i => i.votes.length && !i.reading,
+  reading: i => i.reading,
+  // for readers
   all: i => i.name
 }
 
@@ -63,7 +65,8 @@ export default function List({
       <h2>{ listHeader }</h2>
       {input
           ? <Input placeholder={`Add a ${type.slice(0, -1)}`}
-                   inputString={ onAdd } />
+                   inputString={ onAdd }
+                   type={ type }/>
           : ''
       }
       {data && data.length

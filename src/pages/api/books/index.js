@@ -11,7 +11,6 @@ export default async function handler(req, res) {
       try {
         const books = await Book.find({}) /* find all the data in our database */
         res.status(200).json({ success: true, data: books })
-        console.log('api books', books);
       } catch (error) {
         res.status(400).json({ success: false })
       }

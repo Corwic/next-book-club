@@ -1,8 +1,25 @@
+import styled from 'styled-components'
+import readersSlice from '../redux/readersSlice'
+
+const ReaderCardStyle = styled.div`
+  display: flex;
+  width: 100%;
+  padding: 1rem 0;
+
+  span {
+    flex-grow: 1;
+  }
+  button {
+    background: transparent;
+    border: none;
+  }
+`
 export default function ReaderCard ({ data: reader }) {
+  const { killR } = readersSlice()
+
   return (
-  <>
-    <p>
-      <strong>{reader.name}</strong>
-    </p>
-  </>
+  <ReaderCardStyle>
+    <span>{ reader.name }</span>
+    <button onClick = { () => killR( reader._id ) }> × </button>
+  </ReaderCardStyle>
 )}

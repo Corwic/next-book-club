@@ -48,7 +48,7 @@ const reducer = (state = initialState, action) => {
       }
       break;
     case 'READER_DELETED':
-      const j = state.readers.findIndex(reader => reader._id === action._id)
+      const j = state.readers.findIndex(reader => reader._id === action.id)
       if ( action.payload.status !== 200 ) return { ...state }
       return {
         ...state,

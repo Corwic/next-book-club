@@ -10,7 +10,7 @@ const ReaderSchema = new mongoose.Schema({
 },*/
     "name": { type: String },
     "slug": { type: String },
-    "goodreads_reader_id": { type: String }
+    "reader_goodreads_id": { type: String }
 })
 
 export default mongoose.models.Reader || mongoose.model('Reader', ReaderSchema)

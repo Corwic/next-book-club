@@ -4,15 +4,17 @@ import Head from 'next/head'
 import Layout from '../components/Layout'
 import List from '../components/List'
 
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import readersSlice, { fetchReaders } from '../redux/readersSlice'
 
 import dbConnect from '../utils/dbConnect'
 import Reader from '../models/Reader'
 
-export default function Readers({ readers }) {
+export default function Readers(/*{ readers }*/) {
   const dispatch = useDispatch()
-    const [ inputValue, setInputValue ] = useState( '' )
+  const readers = useSelector( state => state.readers )
+
+  //const [ inputValue, setInputValue ] = useState( '' )
 
   useEffect(() => {
     dispatch( fetchReaders )
@@ -30,8 +32,7 @@ export default function Readers({ readers }) {
       <Head>
         <title>READERS — Book Club App</title>
       </Head>
-      <List data={ readers } type="readers" input
-        onAdd={ setInputValue }/>
+      <List data={ readers } type="readers" input />
     </Layout>
   )
 }
@@ -47,7 +48,7 @@ export async function getServerSideProps() {
     return reader
   })
 
-  return { props: { readers: readers } }
+  return { props: { readersD: readers } }
 /*
 export async function getStaticProps() {
  // Call an external API endpoint to get posts.

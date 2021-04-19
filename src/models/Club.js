@@ -8,7 +8,6 @@ const ClubSchema = new mongoose.Schema({
   required: [true, 'Please provide a name for this Club.'],
   maxlength: [20, 'Name cannot be more than 60 characters'],
 },*/
-    "gr_id": { type: Number },
     "title": { type: String },
     "slug": { type: String }
 })

@@ -19,7 +19,7 @@ export async function fetchBooks(dispatch, getState) {
 
 function addBook( bookData ) {
   return async function addBookThunk( dispatch, getState ) {
-    const initialBook = { title: bookData }
+    const initialBook = { author_n_title: bookData }
     const response = await axios.post( `${server}books`, initialBook )
     console.log('axios add', response.data.data)
     dispatch({ type: 'BOOK_ADDED', payload: response.data.data })
@@ -47,7 +47,7 @@ export default function booksSlice() {
   const books = useMemo(() => allbooks, [ allbooks ] )
   const dispatch = useDispatch()
 
-  const add = ( inputValue, resetInput ) => {
+  const addB = ( inputValue, resetInput ) => {
     dispatch( addBook( inputValue ) )
     resetInput('')
   }
@@ -56,7 +56,7 @@ export default function booksSlice() {
     dispatch( killBook( id ) )
   }
 
-  return { books, add, kill }
+  return { books, addB, kill }
 }
 
 /*

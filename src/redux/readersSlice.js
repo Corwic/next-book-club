@@ -9,14 +9,14 @@ const server = '/api/' // mongoose
 
 export async function fetchReaders(dispatch, getState) {
   const response = await axios.get(`${server}readers`)
-  dispatch({ type: 'READERS_LOADED', payload: response.data })
+  dispatch({ type: 'READERS_LOADED', payload: response.data.data })
 }
 
 function addReader( readerData ) {
   return async function addReaderThunk( dispatch, getState ) {
-    const initialReader = { title: readerData }
+    const initialReader = { name: readerData }
     const response = await axios.post( `${server}readers`, initialReader )
-    dispatch({ type: 'READER_ADDED', payload: response.data})
+    dispatch({ type: 'READER_ADDED', payload: response.data.data })
   }
 }
 
@@ -32,16 +32,16 @@ export default function readersSlice() {
   const readers = useMemo(() => allreaders, [ allreaders ] )
   const dispatch = useDispatch()
 
-  const add = ( inputValue, resetInput ) => {
+  const addR = ( inputValue, resetInput ) => {
     dispatch( addReader( inputValue ) )
     resetInput('')
   }
 
-  const kill = ( id ) => {
+  const killR = ( id ) => {
     dispatch( killReader( id ) )
   }
 
-  return { readers, add, kill }
+  return { readers, addR, killR }
 }
 
 /*
