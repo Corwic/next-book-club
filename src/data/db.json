@@ -1,148 +1,224 @@
 {
-  "books": [{
-    "id": 33095903,
-    "title": "Одесские рассказы",
-    "author": {
-      "id": 34055,
-      "name": "Isaac Babel"
+  "books": [
+    {
+      "id": 33095903,
+      "title": "Одесские рассказы",
+      "author": {
+        "id": 34055,
+        "name": "Isaac Babel"
+      },
+      "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+      "small_image_url": "https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png",
+      "goodreads": {
+        "id": 6449560,
+        "books_count": 68,
+        "ratings_count": 1528,
+        "text_reviews_count": 125,
+        "original_publication_year": 1924,
+        "original_publication_month": "",
+        "original_publication_day": "",
+        "average_rating": 4.07
+      },
+      "club": {
+        "initiator": "",
+        "votes": 7,
+        "reading": false,
+        "rating": 0,
+        "meeting_date": "",
+        "meeting_involved": [],
+        "meeting_notes": "",
+        "notes": ""
+      }
     },
-    "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
-    "small_image_url": "https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png",
-    "goodreads": {
-      "id": 6449560,
-      "books_count": 68,
-      "ratings_count": 1528,
-      "text_reviews_count": 125,
-      "original_publication_year": 1924,
-      "original_publication_month": "",
-      "original_publication_day": "",
-      "average_rating": 4.07
+    {
+      "id": 22522808,
+      "title": "Trigger Warning: Short Fictions and Disturbances",
+      "author": {
+        "id": 1221698,
+        "name": "Neil Gaiman"
+      },
+      "image_url": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1415036119l/22522808._SX98_.jpg",
+      "small_image_url": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1415036119l/22522808._SX50_.jpg",
+      "goodreads": {
+        "id": 41947380,
+        "books_count": 56,
+        "ratings_count": 53804,
+        "text_reviews_count": 5671,
+        "original_publication_year": 2015,
+        "original_publication_month": 2,
+        "original_publication_day": 3,
+        "average_rating": 3.91
+      },
+      "club": {
+        "initiator": "",
+        "votes": 5,
+        "reading": false,
+        "rating": 0,
+        "meeting_date": "",
+        "meeting_involved": [],
+        "meeting_notes": "",
+        "notes": ""
+      }
     },
-    "club": {
-      "initiator": "",
-      "votes": 7,
-      "reading": false,
-      "rating": 0,
-      "meeting_date": "",
-      "meeting_involved": [],
-      "meeting_notes": "",
-      "notes": ""
+    {
+      "id": 25177392,
+      "title": "Острів КРК та інші історії",
+      "author": {
+        "id": 5188382,
+        "name": "Yuri Izdryk"
+      },
+      "image_url": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1426798666l/25177392._SX98_.jpg",
+      "small_image_url": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1426798666l/25177392._SX50_.jpg",
+      "goodreads": {
+        "id": 44883646,
+        "books_count": 1,
+        "ratings_count": 35,
+        "text_reviews_count": 2,
+        "original_publication_year": 1998,
+        "original_publication_month": 1,
+        "original_publication_day": 1,
+        "average_rating": 3.97
+      },
+      "club": {
+        "initiator": "",
+        "votes": 4,
+        "reading": true,
+        "rating": 0,
+        "meeting_date": "",
+        "meeting_involved": [],
+        "meeting_notes": "",
+        "notes": ""
+      }
+    },
+    {
+      "id": 11299,
+      "title": "After the Quake",
+      "author": {
+        "id": 3354,
+        "name": "Haruki Murakami"
+      },
+      "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+      "small_image_url": "https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png",
+      "goodreads": {
+        "id": 6179815,
+        "books_count": 94,
+        "ratings_count": 38510,
+        "text_reviews_count": 2896,
+        "original_publication_year": 2000,
+        "original_publication_month": 2,
+        "original_publication_day": 25,
+        "average_rating": 3.78
+      },
+      "club": {
+        "initiator": "",
+        "votes": null,
+        "reading": false,
+        "rating": 0,
+        "meeting_date": "",
+        "meeting_involved": [],
+        "meeting_notes": "",
+        "notes": ""
+      }
+    },
+    {
+      "id": 4772110,
+      "title": "Nocturnes: Five Stories of Music and Nightfall",
+      "author": {
+        "id": 4280,
+        "name": "Kazuo Ishiguro"
+      },
+      "image_url": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1320430211l/4772110._SX98_.jpg",
+      "small_image_url": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1320430211l/4772110._SY75_.jpg",
+      "goodreads": {
+        "id": 4836931,
+        "books_count": 103,
+        "ratings_count": 18388,
+        "text_reviews_count": 1973,
+        "original_publication_year": 2009,
+        "original_publication_month": 5,
+        "original_publication_day": 5,
+        "average_rating": 3.47
+      },
+      "club": {
+        "initiator": "",
+        "votes": null,
+        "reading": false,
+        "rating": 0,
+        "meeting_date": "",
+        "meeting_involved": [],
+        "meeting_notes": "",
+        "notes": ""
+      }
     }
-  }, {
-    "id": 22522808,
-    "title": "Trigger Warning: Short Fictions and Disturbances",
-    "author": {
-      "id": 1221698,
-      "name": "Neil Gaiman"
+  ],
+  "readers": [
+    {
+      "id": "weak-key-1",
+      "title": "Anton",
+      "author": {
+        "id": 34055,
+        "name": ""
+      },
+      "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+      "small_image_url": "https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png",
+      "goodreads": {
+        "id": 6449560,
+        "books_count": 68,
+        "ratings_count": 1528,
+        "text_reviews_count": 125,
+        "original_publication_year": 1924,
+        "original_publication_month": "",
+        "original_publication_day": "",
+        "average_rating": 4.07
+      },
+      "club": {
+        "initiator": "",
+        "votes": 0,
+        "reading": false,
+        "rating": 0,
+        "meeting_date": "",
+        "meeting_involved": [],
+        "meeting_notes": "",
+        "notes": ""
+      }
     },
-    "image_url": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1415036119l/22522808._SX98_.jpg",
-    "small_image_url": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1415036119l/22522808._SX50_.jpg",
-    "goodreads": {
-      "id": 41947380,
-      "books_count": 56,
-      "ratings_count": 53804,
-      "text_reviews_count": 5671,
-      "original_publication_year": 2015,
-      "original_publication_month": 2,
-      "original_publication_day": 3,
-      "average_rating": 3.91
+    {
+      "id": "weak-key-3",
+      "title": "Anton",
+      "author": {
+        "id": 34055,
+        "name": ""
+      },
+      "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+      "small_image_url": "https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png",
+      "goodreads": {
+        "id": 6449560,
+        "books_count": 68,
+        "ratings_count": 1528,
+        "text_reviews_count": 125,
+        "original_publication_year": 1924,
+        "original_publication_month": "",
+        "original_publication_day": "",
+        "average_rating": 4.07
+      },
+      "club": {
+        "initiator": "",
+        "votes": 0,
+        "reading": false,
+        "rating": 0,
+        "meeting_date": "",
+        "meeting_involved": [],
+        "meeting_notes": "",
+        "notes": ""
+      }
     },
-    "club": {
-      "initiator": "",
-      "votes": 5,
-      "reading": false,
-      "rating": 0,
-      "meeting_date": "",
-      "meeting_involved": [],
-      "meeting_notes": "",
-      "notes": ""
+    {
+      "name": "Anton",
+      "id": "wOnk5f6"
+    },
+    {
+      "name": "Tetiana",
+      "id": "_l8XvAu"
     }
-  }, {
-    "id": 25177392,
-    "title": "Острів КРК та інші історії",
-    "author": {
-      "id": 5188382,
-      "name": "Yuri Izdryk"
-    },
-    "image_url": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1426798666l/25177392._SX98_.jpg",
-    "small_image_url": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1426798666l/25177392._SX50_.jpg",
-    "goodreads": {
-      "id": 44883646,
-      "books_count": 1,
-      "ratings_count": 35,
-      "text_reviews_count": 2,
-      "original_publication_year": 1998,
-      "original_publication_month": 1,
-      "original_publication_day": 1,
-      "average_rating": 3.97
-    },
-    "club": {
-      "initiator": "",
-      "votes": 4,
-      "reading": true,
-      "rating": 0,
-      "meeting_date": "",
-      "meeting_involved": [],
-      "meeting_notes": "",
-      "notes": ""
-    }
-  }, {
-    "id": 11299,
-    "title": "After the Quake",
-    "author": {
-      "id": 3354,
-      "name": "Haruki Murakami"
-    },
-    "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
-    "small_image_url": "https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png",
-    "goodreads": {
-      "id": 6179815,
-      "books_count": 94,
-      "ratings_count": 38510,
-      "text_reviews_count": 2896,
-      "original_publication_year": 2000,
-      "original_publication_month": 2,
-      "original_publication_day": 25,
-      "average_rating": 3.78
-    },
-    "club": {
-      "initiator": "",
-      "votes": null,
-      "reading": false,
-      "rating": 0,
-      "meeting_date": "",
-      "meeting_involved": [],
-      "meeting_notes": "",
-      "notes": ""
-    }
-  }, {
-    "id": 4772110,
-    "title": "Nocturnes: Five Stories of Music and Nightfall",
-    "author": {
-      "id": 4280,
-      "name": "Kazuo Ishiguro"
-    },
-    "image_url": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1320430211l/4772110._SX98_.jpg",
-    "small_image_url": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1320430211l/4772110._SY75_.jpg",
-    "goodreads": {
-      "id": 4836931,
-      "books_count": 103,
-      "ratings_count": 18388,
-      "text_reviews_count": 1973,
-      "original_publication_year": 2009,
-      "original_publication_month": 5,
-      "original_publication_day": 5,
-      "average_rating": 3.47
-    },
-    "club": {
-      "initiator": "",
-      "votes": null,
-      "reading": false,
-      "rating": 0,
-      "meeting_date": "",
-      "meeting_involved": [],
-      "meeting_notes": "",
-      "notes": ""
-    }
-  }]
+  ]
 }

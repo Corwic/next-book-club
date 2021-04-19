@@ -1,4 +1,7 @@
+import React, { useState } from 'react'
 import styled from 'styled-components';
+import booksSlice from '../redux/booksSlice'
+
 
 const InputStyle = styled.input`
   width: 100%;
@@ -15,10 +18,23 @@ const InputStyle = styled.input`
   }
 `;
 
-export default function Input({ placeholder }) {
-  return (
-    <>
-      <InputStyle placeholder={placeholder} />
-    </>
-  )
+export default function Input({ placeholder, inputString = f=>f }) {
+  const [ inputValue, setInputValue ] = useState('')
+  const { add } = booksSlice()
+
+  const handleKeyDown = e => {
+    if (e.key ==='Enter') {
+      //console.log(`Value is: ${ inputValue }`);
+      add( inputValue, setInputValue )
+      //setInputValue('')
+    }
+  }
+  return  <InputStyle
+            type = "text"
+            placeholder = { placeholder }
+            value = { inputValue }
+            onChange = { e => setInputValue(e.target.value) }
+            onKeyDown = { handleKeyDown }
+          />
+
 }
