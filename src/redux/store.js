@@ -7,7 +7,8 @@ let store
 
 const initialState = {
   books: [],
-  readers: []
+  readers: [],
+  clubs: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -17,21 +18,47 @@ const reducer = (state = initialState, action) => {
         ...state,
         books: action.payload
       }
+      break;
     case 'BOOK_ADDED':
       return {
         ...state,
         books: [ ...state.books, action.payload ]
       }
+      break;
     case 'BOOK_DELETED':
-      const i = state.books.findIndex(book => book.id === action.id)
+      console.log('state', state.books);
+      const i = state.books.findIndex(book => book._id === action.id)
       if ( action.payload.status !== 200 ) return { ...state }
       return {
         ...state,
         books: [ ...state.books.slice( 0, i ),
                  ...state.books.slice( i + 1 ) ]
       }
+      break;
+    case 'READERS_LOADED':
+      return {
+        ...state,
+        readers: action.payload
+      }
+      break;
+    case 'READER_ADDED':
+      return {
+        ...state,
+        readers: [ ...state.readers, action.payload ]
+      }
+      break;
+    case 'READER_DELETED':
+      const j = state.readers.findIndex(reader => reader._id === action._id)
+      if ( action.payload.status !== 200 ) return { ...state }
+      return {
+        ...state,
+        readers: [ ...state.readers.slice( 0, j ),
+                 ...state.readers.slice( j + 1 ) ]
+      }
+      break;
     default:
       return state
+      break;
   }
 }
 

@@ -1,0 +1,67 @@
+{
+  "books": {
+    "club": {
+      "meeting_involved": []
+    }
+  },
+  "_id": "607c59f2b8cb7f0eb6bdb6c7",
+  "id": 33095903,
+  "title": "Одесские рассказы",
+  "author": {
+    "id": 34055,
+    "name": "Isaac Babel"
+  },
+  "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+  "small_image_url": "https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png",
+  "goodreads": {
+    "id": 6449560,
+    "books_count": 68,
+    "ratings_count": 1528,
+    "text_reviews_count": 125,
+    "original_publication_year": 1924,
+    "original_publication_month": "",
+    "original_publication_day": "",
+    "average_rating": 4.07
+  },
+  "club": {
+    "initiator": "",
+    "votes": 7,
+    "reading": false,
+    "rating": 0,
+    "meeting_date": "",
+    "meeting_involved": [],
+    "meeting_notes": "",
+    "notes": ""
+  }
+},
+{
+  "author": {
+    "id": 34055,
+    "name": "Isaac Babel"
+  },
+  "goodreads": {
+    "id": 6449560,
+    "books_count": 68,
+    "ratings_count": 1528,
+    "text_reviews_count": 125,
+    "original_publication_year": 1924,
+    "original_publication_month": null,
+    "original_publication_day": null,
+    "average_rating": 4.07
+  },
+  "club": {
+    "meeting_involved": [],
+    "initiator": "",
+    "votes": 7,
+    "reading": false,
+    "rating": 0,
+    "meeting_date": null,
+    "meeting_notes": "",
+    "notes": ""
+  },
+  "_id": "607c59f2b8cb7f0eb6bdb6c7",
+  "id": 33095903,
+  "title": "Одесские рассказы",
+  "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+  "small_image_url": "https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png"
+}

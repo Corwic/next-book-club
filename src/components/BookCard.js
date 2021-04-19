@@ -23,6 +23,6 @@ export default function BookCard ({ data: book }) {
     <span>
       <strong>{book.title}</strong> — {book.author?.name}
     </span>
-    <button onClick = { () => kill( book.id ) }> × </button>
+    <button onClick = { () => kill( book._id ) }> × </button>
   </BookCardStyle>
 )}

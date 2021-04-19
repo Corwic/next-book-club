@@ -3,18 +3,29 @@ import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios'
 
 //import { fetchBooks, addBook, killBook } from './store'
-const server = process.env.NEXT_PUBLIC_API
+//const server = process.env.NEXT_PUBLIC_API // mongoDB
+const server = '/api/' // mongoose
+
 
 export async function fetchBooks(dispatch, getState) {
-  const response = await axios.get(`${server}books`)
-  dispatch({ type: 'BOOKS_LOADED', payload: response.data })
+/*  const response = await axios.get(`${server}books`)
+  console.log('axios', response);
+  dispatch({ type: 'BOOKS_LOADED', payload: response.data.data })*/
+    fetch(`${server}books`)
+      .then( response => response.json() )
+      .then( res => {
+              console.log('fetch load', res.data)
+              dispatch({ type: 'BOOKS_LOADED', payload: res.data })
+           })
+      .catch( error => { console.error('Error:', error); })
 }
 
 function addBook( bookData ) {
   return async function addBookThunk( dispatch, getState ) {
     const initialBook = { title: bookData }
     const response = await axios.post( `${server}books`, initialBook )
-    dispatch({ type: 'BOOK_ADDED', payload: response.data})
+    console.log('axios add', response.data.data)
+    dispatch({ type: 'BOOK_ADDED', payload: response.data.data })
   }
 }
 

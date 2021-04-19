@@ -4,19 +4,25 @@ import Head from 'next/head'
 import Layout from '../components/Layout'
 import List from '../components/List'
 
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import booksSlice, { fetchBooks } from '../redux/booksSlice'
-import { connectToDatabase } from '../utils/mongodb'
+
+import dbConnect from '../utils/dbConnect'
+import Book from '../models/Book'
+//import { connectToDatabase } from '../utils/mongodb'
 
 
-export default function Books( { books } /*{ booksData }*/ ) {
+export default function Books( /*{ booksD } *//*{ booksData }*/ ) {
   const dispatch = useDispatch()
+  const books = useSelector( state => state.books )
   //const { books } = booksSlice()
+  console.log('bookspage', books);
 
   useEffect(() => {
     dispatch( fetchBooks )
   }, [])
 
+  //console.log('books page', books);
   return (
     <Layout>
       <Head>
@@ -29,11 +35,28 @@ export default function Books( { books } /*{ booksData }*/ ) {
   )
 }
 
+// mogoose way getServerSideProps
 export async function getStaticProps() {
+  await dbConnect()
+
+  // find all the data in our database
+  const result = await Book.find({})
+  const books = result.map((doc) => {
+    const book = doc.toObject()
+    book._id = book._id.toString()
+    return book
+  })
+
+  return { props: { booksD: books } }
+}
+
+
+// mongoDB way
+/*export async function getStaticProps() {
   const { db } = await connectToDatabase();
   const books = await db
     .collection("books")
-    .find({})
+    .find({}) // .sort()
     .limit(20)
     .toArray();
   return {
@@ -41,33 +64,4 @@ export async function getStaticProps() {
       books: JSON.parse(JSON.stringify(books)),
     },
   };
-}
-
-/*export async function getServerSideProps(context) {
-  const { client } = await connectToDatabase()
-
-  const isConnected = await client.isConnected()
-
-  return {
-    props: { isConnected },
-  }
 }*/
-
-
-
-/*
-export async function getStaticProps() {
-  // Call an external API endpoint to get posts.
-  // You can use any data fetching library
-  const res = await fetch( process.env.NEXT_PUBLIC_API + 'books' )
-  const booksData = await res.json()
-
-  // By returning { props: { posts } }, the Blog component
-  // will receive `posts` as a prop at build time
-  return {
-    props: {
-      booksData,
-    },
-  }
-}
-*/
