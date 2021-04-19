@@ -1,6 +1,6 @@
 {
   "name": "book-club",
-  "version": 1,
+  "version": 2,
   "env": {
     "MONGODB_URI": "mongodb+srv://corwic:YFISUYPaUD2WXFOB@bookcluster.gefit.mongodb.net/bookclub?retryWrites=true&w=majority"
   }
