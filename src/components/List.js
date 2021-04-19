@@ -36,9 +36,9 @@ const listNames = {
   readers: 'Club members'
 }
 const conditions = {
-  toRead: i => !i.club?.votes,
+  toRead: i => !i?.club?.votes,
   read: i => i.club?.votes && !i.club.reading,
-  reading: i => i.club?.reading,
+  reading: i => i?.club?.reading,
   all: i => i.name
 }
 
