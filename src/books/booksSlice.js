@@ -2,7 +2,6 @@ import { useMemo } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios'
 
-//import { fetchBooks, addBook, killBook } from './store'
 //const server = process.env.NEXT_PUBLIC_API // mongoDB
 const server = '/api/' // mongoose
 
@@ -11,10 +10,7 @@ export async function fetchBooks(dispatch, getState) {
   const response = await axios.get(`${server}books`)
   console.log('axios', response);
   dispatch({ type: 'BOOKS_LOADED', payload: response.data.data })
-/*    fetch(`${server}books`)
-      .then( response => response.json() )
-      .then( res => dispatch({ type: 'BOOKS_LOADED', payload: res.data }) )
-      .catch( error => { console.error('Error:', error); })*/
+
 }
 
 function addBook( bookData ) {
@@ -23,15 +19,6 @@ function addBook( bookData ) {
     const response = await axios.post( `${server}books`, initialBook )
     console.log('axios add', response.data.data)
     dispatch({ type: 'BOOK_ADDED', payload: response.data.data })
-/*    const initialBook = { title: bookData }
-    const options = {
-      method: 'POST',  //mode: 'no-cors',
-      headers:{ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
-      body: JSON.stringify( initialBook )
-    }
-    fetch( `${server}books`, options )
-      .then( response => response.json() )
-      .then( res => dispatch({ type: 'BOOK_ADDED', payload: res.data.data }) )*/
   }
 }
 
@@ -42,7 +29,7 @@ function killBook( id ) {
   }
 }
 
-export default function booksSlice() {
+export function booksSlice() {
   const allbooks = useSelector((state) => state.books)
   const books = useMemo(() => allbooks, [ allbooks ] )
   const dispatch = useDispatch()

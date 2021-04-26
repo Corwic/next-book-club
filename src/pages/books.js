@@ -1,14 +1,12 @@
 import React, { useEffect } from 'react'
 import Router from 'next/router'
 import Head from 'next/head'
-import Layout from '../components/Layout'
-import List from '../components/List'
+import Layout from '../common/Layout'
+import List from '../common/List'
 
 import { useDispatch, useSelector } from 'react-redux'
-import booksSlice, { fetchBooks } from '../redux/booksSlice'
-
+import { Book, booksSlice, fetchBooks } from '../books'
 import dbConnect from '../utils/dbConnect'
-import Book from '../models/Book'
 //import { connectToDatabase } from '../utils/mongodb'
 
 

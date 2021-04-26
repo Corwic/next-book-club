@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
-import booksSlice from '../redux/booksSlice'
-import readersSlice from '../redux/readersSlice'
+import { booksSlice } from '../books'
+import { readersSlice } from '../readers'
 
 
 const InputStyle = styled.input`

@@ -27,7 +27,7 @@ function killReader( id ) {
   }
 }
 
-export default function readersSlice() {
+export function readersSlice() {
   const allreaders = useSelector((state) => state.readers)
   const readers = useMemo(() => allreaders, [ allreaders ] )
   const dispatch = useDispatch()

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import readersSlice from '../redux/readersSlice'
+import { readersSlice } from './readersSlice'
 
 const ReaderCardStyle = styled.div`
   display: flex;
@@ -14,7 +14,7 @@ const ReaderCardStyle = styled.div`
     border: none;
   }
 `
-export default function ReaderCard ({ data: reader }) {
+export function ReaderCard ({ data: reader }) {
   const { killR } = readersSlice()
 
   return (

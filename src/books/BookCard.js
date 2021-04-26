@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import booksSlice from '../redux/booksSlice'
+import { booksSlice } from './booksSlice'
 
 
 const BookCardStyle = styled.div`
@@ -15,7 +15,7 @@ const BookCardStyle = styled.div`
     border: none;
   }
 `
-export default function BookCard ({ data: book }) {
+export function BookCard ({ data: book }) {
   const { kill } = booksSlice()
 
   return (

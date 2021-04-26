@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import Router from 'next/router'
 import Head from 'next/head'
-import Layout from '../components/Layout'
-import List from '../components/List'
+import Layout from '../common/Layout'
+import List from '../common/List'
 
 import { useDispatch, useSelector } from 'react-redux'
-import readersSlice, { fetchReaders } from '../redux/readersSlice'
-
+import { Reader, readersSlice, fetchReaders } from '../readers'
 import dbConnect from '../utils/dbConnect'
-import Reader from '../models/Reader'
 
 export default function Readers(/*{ readers }*/) {
   const dispatch = useDispatch()

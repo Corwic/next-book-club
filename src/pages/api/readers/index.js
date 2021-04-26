@@ -1,5 +1,5 @@
 import dbConnect from '../../../utils/dbConnect'
-import Reader from '../../../models/Reader'
+import Reader from '../../../readers/ReaderSchema'
 
 export default async function handler(req, res) {
   const { method } = req

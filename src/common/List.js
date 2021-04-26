@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import key from 'weak-key'
 //import books from '../data/books.json'
-import BookCard from './BookCard'
-import ReaderCard from './ReaderCard'
+import {BookCard} from '../books/BookCard'
+import {ReaderCard} from '../readers/ReaderCard'
 import Input from './Input'
 
 

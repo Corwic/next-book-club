@@ -30,4 +30,4 @@ const BookSchema = new mongoose.Schema({
   "review": { type: String }
 })
 
-export default mongoose.models.Book || mongoose.model('Book', BookSchema)
+export default mongoose.models?.Book || mongoose.model('Book', BookSchema)

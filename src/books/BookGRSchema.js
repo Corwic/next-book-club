@@ -28,4 +28,4 @@ const BookGRSchema = new mongoose.Schema({
   }
 })
 
-export default mongoose.models.BookGR || mongoose.model('BookGR', BookGRSchema)
+export mongoose.models.BookGR || mongoose.model('BookGR', BookGRSchema)

@@ -1,5 +1,5 @@
 import dbConnect from '../../../utils/dbConnect'
-import Book from '../../../models/Book'
+import Book from '../../../books/BookSchema'
 
 export default async function handler(req, res) {
   const {

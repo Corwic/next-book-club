@@ -1,5 +1,5 @@
 import dbConnect from '../../../utils/dbConnect'
-import Club from '../../../models/Club'
+import Club from '../../../clubs/ClubSchema'
 
 export default async function handler(req, res) {
   const { method } = req

@@ -13,4 +13,4 @@ const ReaderSchema = new mongoose.Schema({
     "reader_goodreads_id": { type: String }
 })
 
-export default mongoose.models.Reader || mongoose.model('Reader', ReaderSchema)
+export default mongoose.models?.Reader || mongoose.model('Reader', ReaderSchema)
