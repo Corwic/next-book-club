@@ -4,20 +4,18 @@ import Head from 'next/head'
 import Layout from '../common/Layout'
 import List from '../common/List'
 
-import { useDispatch, useSelector } from 'react-redux'
-import { Book, booksSlice, fetchBooks } from '../books'
+import { Book, bookSlice } from '../books'
 import dbConnect from '../utils/dbConnect'
 //import { connectToDatabase } from '../utils/mongodb'
 
 
 export default function Books( /*{ booksD } *//*{ booksData }*/ ) {
-  const dispatch = useDispatch()
-  const books = useSelector( state => state.books )
-  //const { books } = booksSlice()
+  //const books = useSelector( state => state.books )
+  const { books, loadBs } = bookSlice()
   console.log('bookspage', books);
 
   useEffect(() => {
-    dispatch( fetchBooks )
+    loadBs()
   }, [])
 
   //console.log('books page', books);
@@ -33,8 +31,9 @@ export default function Books( /*{ booksD } *//*{ booksData }*/ ) {
   )
 }
 
+
 // mogoose way getServerSideProps
-export async function getServerSideProps() {
+/*export async function getServerSideProps() {
   await dbConnect()
 
   // find all the data in our database
@@ -47,7 +46,7 @@ export async function getServerSideProps() {
 
   return { props: { booksD: books } }
 }
-
+*/
 
 // mongoDB way
 /*export async function getStaticProps() {

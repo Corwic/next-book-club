@@ -1,24 +1,10 @@
-//import { useMemo } from 'react'
-//import { createStore, applyMiddleware, combineReducers } from 'redux'
-//import { composeWithDevTools } from 'redux-devtools-extension'
-//import thunk from 'redux-thunk';
-import { configureStore } from '@reduxjs/toolkit'
-import { bookReducer } from './books/bookSlice'
-import readerReducer from './readers/readerSlice'
+import { useMemo } from 'react'
+import { createStore, applyMiddleware, combineReducers } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
+import thunk from 'redux-thunk';
 
+let store
 
-
-
-const store = configureStore({
-  reducer: {
-    books: bookReducer,
-    readers: readerReducer
-  }
-})
-
-export default store
-
-/*
 const initialState = {
   books: [],
   readers: [],
@@ -102,4 +88,3 @@ export function useStore(initialState) {
   const store = useMemo(() => initializeStore(initialState), [initialState])
   return store
 }
-*/

@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios'
 
+
 //const server = process.env.NEXT_PUBLIC_API // mongoDB
 const server = '/api/' // mongoose
 
@@ -14,7 +15,7 @@ export async function fetchBooks(dispatch, getState) {
 }
 
 function addBook( bookData ) {
-  return async function addBookThunk( dispatch, getState ) {
+  return async function ( dispatch, getState ) {
     const initialBook = { author_n_title: bookData }
     const response = await axios.post( `${server}books`, initialBook )
     console.log('axios add', response.data.data)
@@ -23,7 +24,7 @@ function addBook( bookData ) {
 }
 
 function killBook( id ) {
-  return async function killBookThunk( dispatch, getState ) {
+  return async function ( dispatch, getState ) {
     const response = await axios.delete( `${server}books/${id}` )
     dispatch({ type: 'BOOK_DELETED', payload: response, id })
   }

@@ -1,3 +1,3 @@
 export { ReaderCard } from './ReaderCard'
-export { readersSlice, fetchReaders } from './readersSlice'
+export * from './readerSlice'
 export { default as Reader } from './ReaderSchema'

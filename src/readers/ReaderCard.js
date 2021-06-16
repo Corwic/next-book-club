@@ -1,5 +1,9 @@
 import styled from 'styled-components'
-import { readersSlice } from './readersSlice'
+import {
+  loadReaders,
+  addReader,
+  killReader,
+} from './readerSlice'
 
 const ReaderCardStyle = styled.div`
   display: flex;
@@ -15,11 +19,10 @@ const ReaderCardStyle = styled.div`
   }
 `
 export function ReaderCard ({ data: reader }) {
-  const { killR } = readersSlice()
 
   return (
   <ReaderCardStyle>
     <span>{ reader.name }</span>
-    <button onClick = { () => killR( reader._id ) }> × </button>
+    <button onClick = { () => killReader( reader._id ) }> × </button>
   </ReaderCardStyle>
 )}

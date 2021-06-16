@@ -1,9 +1,8 @@
 import '../styles/globals.scss'
 import { Provider } from 'react-redux'
-import { useStore } from '../store'
+import store from '../store'
 
 function MyApp({ Component, pageProps }) {
-  const store = useStore(pageProps.initialReduxState)
 
   return (
     <Provider store={ store }>

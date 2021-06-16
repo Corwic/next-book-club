@@ -4,6 +4,8 @@ import Head from 'next/head'
 import Layout from '../common/Layout'
 import List from '../common/List'
 
+import { unwrapResult } from '@reduxjs/toolkit'
+
 import { useDispatch, useSelector } from 'react-redux'
 import { Reader, readersSlice, fetchReaders } from '../readers'
 import dbConnect from '../utils/dbConnect'
@@ -11,7 +13,6 @@ import dbConnect from '../utils/dbConnect'
 export default function Readers(/*{ readers }*/) {
   const dispatch = useDispatch()
   const readers = useSelector( state => state.readers )
-
   //const [ inputValue, setInputValue ] = useState( '' )
 
   useEffect(() => {
@@ -35,10 +36,10 @@ export default function Readers(/*{ readers }*/) {
   )
 }
 
-export async function getServerSideProps() {
+/*export async function getServerSideProps() {
   await dbConnect()
 
-  /* find all the data in our database */
+   find all the data in our database
   const result = await Reader.find({})
   const readers = result.map((doc) => {
     const reader = doc.toObject()
@@ -47,6 +48,8 @@ export async function getServerSideProps() {
   })
 
   return { props: { readersD: readers } }
+
+}*/
 /*
 export async function getStaticProps() {
  // Call an external API endpoint to get posts.
@@ -61,4 +64,3 @@ export async function getStaticProps() {
       readersData,
     },
   }*/
-}

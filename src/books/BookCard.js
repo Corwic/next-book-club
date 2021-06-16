@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { booksSlice } from './booksSlice'
+import { bookSlice } from './bookSlice'
 
 
 const BookCardStyle = styled.div`
@@ -16,7 +16,7 @@ const BookCardStyle = styled.div`
   }
 `
 export function BookCard ({ data: book }) {
-  const { kill } = booksSlice()
+  const { kill } = bookSlice()
 
   return (
   <BookCardStyle>
