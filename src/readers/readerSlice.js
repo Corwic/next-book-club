@@ -1,9 +1,22 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { useSelector, useDispatch } from 'react-redux'
+import { createSlice, createAsyncThunk, createReducer } from '@reduxjs/toolkit'
 import axios from 'axios'
 
 const server = '/api/'
 
-export const fetchReaders = createAsyncThunk(
+/*const handleError = fn => (...params) => fn(...params).catch( error => {
+  if (!error.response) throw error
+  return rejectWithValue(error.response.data)
+})*/
+
+/*const handleError = ( fn, rejectWithValue ) => () => {
+  try { fn() } catch (err) {
+    if (!error.response) throw error
+    return rejectWithValue(error.response.data)
+  }
+}*/
+
+/*export const fetchReaders = createAsyncThunk(
   'readers/fetch',
   async () => {
     console.log('async');
@@ -11,48 +24,78 @@ export const fetchReaders = createAsyncThunk(
     console.log('response', response);
     return response.data.data;
   }
+)*/
+
+
+const loadReadersAction = createAsyncThunk( 'readers/load',
+  async (props, { rejectWithValue }) => {
+      const response = await axios.get(`${server}readers`)
+      return response.data.data
+  }
 )
 
 
-
-export const readerSlice = createSlice({
+export const readerS = createSlice({
   name: 'readers',
   initialState: [],
-/*  reducers: {
-    loadReaders: (state) => {
-
-    },
-    addReader: (state) => {
-
-    },
-    killReader: (state) => {
-
-    }
-  },*/
+  reducers: {
+    //loadReaders: (state) => {},
+  },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchReaders.pending, (state) => {
-        state.status = 'loading';
+      //.addCase(handleError(loadReadersAction).pending, (state) => {
+      //  state.status = 'loading';
+      //})
+      .addCase(loadReadersAction.fulfilled, (state, { payload }) => {
+        return payload
       })
-      .addCase(fetchReaders.fulfilled, (state, action) => {
-        state.status = 'idle';
-        state.value = action.payload;
-      })
-      .addCase(fetchReaders.rejected, (state, action) => {
-        console.log('rejected');
-        console.log(state);
-        console.log(action);
-        //state.status = 'rejected';
-        //state.value = action.payload;
+      .addCase(loadReadersAction.rejected, (state, action) => {
+        console.log('oooo', action.payload || action.error);
+        return state
       });
   }
 })
+//handleError(
+export const readerReducer = readerS.reducer
+/*createReducer( [], builder => {
+  builder
+    //.addCase(handleError(loadReadersAction).pending, (state) => {
+    //  state.status = 'loading';
+    //})
+    .addCase(loadReadersAction.fulfilled, (state, { payload }) => {
+      return payload
+    })
+    .addCase(loadReadersAction.rejected, (state, action) => {
+      console.log('oooo', action.payload || action.error);
+      return state
+    });
+})*/
+
+export function readerSlice() {
+  const readers = useSelector((state) => state.readers)
+//  const readers = useMemo(() => allreaders, [ allreaders ] )
+  const dispatch = useDispatch()
+
+  const loadReaders = () => {
+    dispatch( loadReadersAction() )
+  }
+
+  const addR = ( inputValue, resetInput ) => {
+    dispatch( addReader( inputValue ) )
+    resetInput('')
+  }
+
+  const killR = ( id ) => {
+    dispatch( killReader( id ) )
+  }
+
+  return { readers, addR, killR, loadReaders }
+}
 
 
+//export const { loadReaders, addReader, killReader } = readerSlice.actions
 
-export const { loadReaders, addReader, killReader } = readerSlice.actions
 
-export default readerSlice.reducer
 
 /*
 import { useMemo } from 'react'

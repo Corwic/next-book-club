@@ -1,9 +1,6 @@
 import styled from 'styled-components'
-import {
-  loadReaders,
-  addReader,
-  killReader,
-} from './readerSlice'
+import { readerSlice } from './readerSlice'
+
 
 const ReaderCardStyle = styled.div`
   display: flex;
@@ -19,6 +16,7 @@ const ReaderCardStyle = styled.div`
   }
 `
 export function ReaderCard ({ data: reader }) {
+  const { killReader } = readerSlice()
 
   return (
   <ReaderCardStyle>

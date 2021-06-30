@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
 import { bookSlice } from '../books'
-import { addReader } from '../readers'
+import { readerSlice } from '../readers'
 
 
 const InputStyle = styled.input`
@@ -23,6 +23,7 @@ const InputStyle = styled.input`
 export default function Input({ placeholder, inputString = f=>f, type }) {
   const [ inputValue, setInputValue ] = useState('')
   const { addBook } = bookSlice()
+  const { addReader } = readerSlice()
   const add = type === 'books' ? addBook : addReader
 
   const handleKeyDown = e => {

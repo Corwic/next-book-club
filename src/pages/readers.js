@@ -7,16 +7,15 @@ import List from '../common/List'
 import { unwrapResult } from '@reduxjs/toolkit'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { Reader, readersSlice, fetchReaders } from '../readers'
+import { Reader, readerSlice, fetchReaders } from '../readers'
 import dbConnect from '../utils/dbConnect'
 
 export default function Readers(/*{ readers }*/) {
-  const dispatch = useDispatch()
-  const readers = useSelector( state => state.readers )
+  const { readers, loadReaders } = readerSlice()
   //const [ inputValue, setInputValue ] = useState( '' )
 
   useEffect(() => {
-    dispatch( fetchReaders )
+    loadReaders()
   }, [])
 
   /*const { addItem } = usePost( inputValue, 'readers' )*/

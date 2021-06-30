@@ -4,7 +4,7 @@
 //import thunk from 'redux-thunk';
 import { configureStore } from '@reduxjs/toolkit'
 import { bookReducer } from './books/bookSlice'
-import readerReducer from './readers/readerSlice'
+import { readerReducer } from './readers/readerSlice'
 
 
 
