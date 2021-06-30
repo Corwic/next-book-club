@@ -22,8 +22,8 @@ const InputStyle = styled.input`
 
 export default function Input({ placeholder, inputString = f=>f, type }) {
   const [ inputValue, setInputValue ] = useState('')
-  const { addB } = bookSlice()
-  const add = type === 'books' ? addB : addReader
+  const { addBook } = bookSlice()
+  const add = type === 'books' ? addBook : addReader
 
   const handleKeyDown = e => {
     if (e.key ==='Enter') {

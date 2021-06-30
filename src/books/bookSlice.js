@@ -1,33 +1,71 @@
 import { useMemo } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios'
-import { createAction, createReducer, createSlice } from '@reduxjs/toolkit'
+import { createAction, createAsyncThunk, createReducer, createSlice } from '@reduxjs/toolkit'
 
 
 //const server = process.env.NEXT_PUBLIC_API // mongoDB
 const server = '/api/' // mongoose
 
-const loadBooksAction = createAction('books/load')
-const addBookAction = createAction('books/add')
-const killBookAction = createAction('books/kill')
+//const loadBooksAction = createAction('books/load')
+const loadBooksAction = createAsyncThunk( 'books/load',
+  async (props, { rejectWithValue }) => {
+    try {
+      const response = await axios.get(`${server}books`)
+      return response.data.data
+    } catch (err) {
+      let error = error
+      if (!error.response) throw err
+      return rejectWithValue(error.response.data)
+    }
+  }
+)
+const addBookAction = createAsyncThunk( 'books/add',
+  async ( bookData, { rejectWithValue }) => {
+    try {
+      const initialBook = { author_n_title: bookData }
+      const response = await axios.post( `${server}books`, initialBook )
+      return response.data.data
+    } catch (err) {
+      let error = error
+      if (!error.response) throw err
+      return rejectWithValue(error.response.data)
+    }
+  }
+)
+const killBookAction = createAsyncThunk( 'books/kill',
+  async ( id, { rejectWithValue }) => {
+    try {
+      const response = await axios.delete( `${server}books/${id}` )
+      return { status: response.status, id }
+    } catch (err) {
+      let error = error
+      if (!error.response) throw err
+      return rejectWithValue(error.response.data)
+    }
+  }
+)
 
 export const bookReducer = createReducer( [], builder => {
   builder
-    .addCase(loadBooksAction, ( state, action ) => {
-      return action.payload
+    .addCase(loadBooksAction.fulfilled, ( state, { payload } ) => {
+      return payload
     })
-    .addCase(addBookAction, ( state, action ) => {
-      console.log(state);
-      state.push( action.payload )
+    .addCase(loadBooksAction.rejected, ( state, action ) => {
+      console.log('oooo', action.payload || action.error);
+      return state
     })
-   .addCase(killBookAction, ( state, action ) => {
-      if ( action.payload.response.status !== 200 ) return state
-      const i = state.findIndex(book => book._id === action.payload.id)
+    .addCase(addBookAction.fulfilled, ( state, { payload } ) => {
+      state.push( payload )
+    })
+   .addCase(killBookAction.fulfilled, ( state, { payload } ) => {
+      console.log('action', payload);
+      if ( payload.status !== 200 ) return state
+      const i = state.findIndex(book => book._id === payload.id)
       return state = [ ...state.slice( 0, i ),
                       ...state.slice( i + 1 ) ]
     })
 })
-
 
 
 export function bookSlice() {
@@ -35,44 +73,22 @@ export function bookSlice() {
   const books = useMemo(() => allbooks, [ allbooks ] )
   const dispatch = useDispatch()
 
-  const loadBs = () => {
-    dispatch( loadBooks() )
+  const loadBooks = () => {
+    dispatch( loadBooksAction() )
   }
 
-  const addB = ( inputValue, resetInput ) => {
-    dispatch( addBook( inputValue ) )
+  const addBook = ( inputValue, resetInput ) => {
+    dispatch( addBookAction( inputValue ) )
     resetInput('')
   }
 
   const kill = ( id ) => {
-    dispatch( killBook( id ) )
+    dispatch( killBookAction( id ) )
   }
 
-  return { books, addB, kill, loadBs }
+  return { books, addBook, kill, loadBooks }
 }
 
-function loadBooks() {
-  return async function fetchBooks( dispatch ) {
-    const response = await axios.get(`${server}books`)
-    dispatch(loadBooksAction(response.data.data))
-    //dispatch({ type: 'BOOKS_LOADED', payload: response.data.data })
-  }
-}
-
-function addBook( bookData ) {
-  return async function ( dispatch ) {
-    const initialBook = { author_n_title: bookData }
-    const response = await axios.post( `${server}books`, initialBook )
-    dispatch(addBookAction( response.data.data ))
-  }
-}
-
-function killBook( id ) {
-  return async function ( dispatch ) {
-    const response = await axios.delete( `${server}books/${id}` )
-    dispatch(killBookAction({ response, id }))
-  }
-}
 
 /*export const bookReducer = (state = [], action) => {
   switch (action.type) {

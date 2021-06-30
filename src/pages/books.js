@@ -11,11 +11,11 @@ import dbConnect from '../utils/dbConnect'
 
 export default function Books( /*{ booksD } *//*{ booksData }*/ ) {
   //const books = useSelector( state => state.books )
-  const { books, loadBs } = bookSlice()
+  const { books, loadBooks } = bookSlice()
   console.log('bookspage', books);
 
   useEffect(() => {
-    loadBs()
+    loadBooks()
   }, [])
 
   //console.log('books page', books);
