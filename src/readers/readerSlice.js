@@ -16,26 +16,68 @@ const server = '/api/'
   }
 }*/
 
-/*export const fetchReaders = createAsyncThunk(
-  'readers/fetch',
-  async () => {
-    console.log('async');
-    const response = await axios.get(`/api/readers`)
-    console.log('response', response);
-    return response.data.data;
-  }
-)*/
-
-
 const loadReadersAction = createAsyncThunk( 'readers/load',
-  async (props, { rejectWithValue }) => {
-      const response = await axios.get(`${server}readers`)
-      return response.data.data
+  async ( props, { rejectWithValue }) => {
+    const response = await axios.get(`${server}readers`)
+    return response.data.data
   }
 )
+const addReaderAction = createAsyncThunk( 'readers/add',
+  async ( readerData, { rejectWithValue }) => {
+    const initialReader = { name: readerData }
+    const response = await axios.post( `${server}readers`, initialReader )
+    return response.data.data
+  }
+)
+const killReaderAction = createAsyncThunk( 'readers/kill',
+  async ( id, { rejectWithValue }) => {
+    const response = await axios.delete( `${server}readers/${id}` )
+    return { status: response.status, id }
+  }
+)
+export const readerReducer = createReducer( [], builder => {
+  builder
+    .addCase(loadReadersAction.fulfilled, (state, { payload }) => {
+      return payload
+    })
+    .addCase(loadReadersAction.rejected, (state, action) => {
+      console.log('oooo', action.payload || action.error);
+      return state
+    })
+    .addCase(addReaderAction.fulfilled, ( state, { payload } ) => {
+      state.push( payload )
+    })
+    .addCase(killReaderAction.fulfilled, ( state, { payload } ) => {
+      console.log('action', payload);
+      if ( payload.status !== 200 ) return state
+      const i = state.findIndex(reader => reader._id === payload.id)
+      return state = [ ...state.slice( 0, i ),
+                       ...state.slice( i + 1 ) ]
+    })
+})
 
+export function readerSlice() {
+  const readers = useSelector((state) => state.readers)
+//  const readers = useMemo(() => allreaders, [ allreaders ] )
+  const dispatch = useDispatch()
 
-export const readerS = createSlice({
+  const loadReaders = () => {
+    dispatch( loadReadersAction() )
+  }
+
+  const addReader = ( inputValue, resetInput ) => {
+    dispatch( addReaderAction( inputValue ) )
+    resetInput('')
+  }
+
+  const killReader = ( id ) => {
+    dispatch( killReaderAction( id ) )
+  }
+
+  return { readers, addReader, killReader, loadReaders }
+}
+
+/*export const readerS = createSlice({
   name: 'readers',
   initialState: [],
   reducers: {
@@ -54,43 +96,10 @@ export const readerS = createSlice({
         return state
       });
   }
-})
-//handleError(
-export const readerReducer = readerS.reducer
-/*createReducer( [], builder => {
-  builder
-    //.addCase(handleError(loadReadersAction).pending, (state) => {
-    //  state.status = 'loading';
-    //})
-    .addCase(loadReadersAction.fulfilled, (state, { payload }) => {
-      return payload
-    })
-    .addCase(loadReadersAction.rejected, (state, action) => {
-      console.log('oooo', action.payload || action.error);
-      return state
-    });
 })*/
+//handleError(
+/*export const readerReducer = readerS.reducer*/
 
-export function readerSlice() {
-  const readers = useSelector((state) => state.readers)
-//  const readers = useMemo(() => allreaders, [ allreaders ] )
-  const dispatch = useDispatch()
-
-  const loadReaders = () => {
-    dispatch( loadReadersAction() )
-  }
-
-  const addR = ( inputValue, resetInput ) => {
-    dispatch( addReader( inputValue ) )
-    resetInput('')
-  }
-
-  const killR = ( id ) => {
-    dispatch( killReader( id ) )
-  }
-
-  return { readers, addR, killR, loadReaders }
-}
 
 
 //export const { loadReaders, addReader, killReader } = readerSlice.actions
