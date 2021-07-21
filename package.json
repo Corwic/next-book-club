@@ -6,7 +6,8 @@
     "dev": "next dev -p 3003",
     "fake": "json-server src/data/db.json -p 4003",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "jest --watchAll"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.0",
@@ -26,6 +27,18 @@
     "weak-key": "^1.0.2"
   },
   "devDependencies": {
+    "@testing-library/dom": "^8.1.0",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
+    "@testing-library/user-event": "^13.2.0",
+    "@types/jest": "^26.0.24",
+    "babel-jest": "^27.0.6",
+    "jest": "^27.0.6",
+    "msw": "^0.32.2",
+    "next-page-tester": "^0.27.0",
     "redux-devtools": "^3.7.0"
+  },
+  "jest": {
+    "verbose": true
   }
 }
