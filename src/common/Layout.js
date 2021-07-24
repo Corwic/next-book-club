@@ -1,6 +1,45 @@
+import { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import Header from './Header'
 import Footer from './Footer'
-import styled from 'styled-components'
+import SideScreenContent from './SideScreenContent'
+import { toggleSideScreen } from '../common/commonSlice'
+
+
+export default function Layout({ children }) {
+  const { sideScreenContent, id } = useSelector( state => state.common )
+  const dispatch = useDispatch()
+  const [ isOpen, setIsOpen ] = useState( sideScreenContent )
+
+  useEffect(() => {
+    setIsOpen( sideScreenContent )
+    console.log( 'sideScreenContent', isOpen);
+  }, [sideScreenContent] )
+
+  const closeSideScreen = () => {
+    dispatch( toggleSideScreen() )
+    setIsOpen( '' )
+  }
+
+  return (
+    <div className="wrapper">
+      <div className="screen hiddenscreen"></div>
+      <div className={'screen mainscreen' + ( isOpen ? ' show': '')}>
+        <Header />
+          <main>
+            {children}
+          </main>
+        <Footer />
+      </div>
+      <div className = {`screen sidescreen` + ( isOpen ? ' show' : '' ) }>
+        <button onClick = {() => closeSideScreen()}>×</button>
+        <SideScreenContent type={ sideScreenContent } id={ id }/>
+      </div>
+    </div>
+  )
+}
+
+// import styled from 'styled-components'
 
 /* In global.scss
   max-width: 411px;
@@ -22,15 +61,3 @@ import styled from 'styled-components'
     margin: 0 auto;
   }
 `*/
-
-export default function Layout({ children }) {
-  return (
-    <div className="wrapper">
-      <Header />
-        <main>
-          {children}
-        </main>
-      <Footer />
-    </div>
-  )
-}

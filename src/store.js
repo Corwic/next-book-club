@@ -5,6 +5,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { bookReducer } from './books/bookSlice'
 import { readerReducer } from './readers/readerSlice'
+import commonReducer from './common/commonSlice'
 
 
 
@@ -12,7 +13,8 @@ import { readerReducer } from './readers/readerSlice'
 const store = configureStore({
   reducer: {
     books: bookReducer,
-    readers: readerReducer
+    readers: readerReducer,
+    common: commonReducer
   }
 })
 

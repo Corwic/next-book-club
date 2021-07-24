@@ -33,14 +33,24 @@ main {
   height: 57vh;
 }
 
-
 .wrapper {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: center;
+  margin: 10vh auto;
+  @media (max-width: 411px) {
+    margin: 0 auto;
+  }
+}
+
+.screen {
   max-width: 411px;
+  width: 411px;
   min-width: 320px;
   height: 80vh;
   background-color: white;
 
-  margin: 10vh auto;
+  margin: 0;
   border: 2px black solid;
   border-radius: 1rem;
   padding: .5rem 1rem;
@@ -51,8 +61,39 @@ main {
 
   @media (max-width: 411px) {
     border: none;
-    margin: 0 auto;
   }
+}
+.sidescreen, .hiddenscreen {
+  width: 0;
+  padding: 0;
+  min-width: unset;
+  button {
+    opacity: 0;
+  }
+}
+.sidescreen {
+  position: relative;
+  z-index: 10;
+  transition: .5s width ease-in-out;
+  box-sizing: border-box;
+}
+.sidescreen.show {
+  width: 411px;
+  button {
+    opacity: 1;
+  }
+}
+.mainscreen.show {
+  @media (max-width: 822px) {
+    width: 0;
+    padding: 0;
+    min-width: unset;
+    max-width: unset;
+  }
+}
+
+.hide {
+  display: none;
 }
 /*
 {

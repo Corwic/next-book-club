@@ -82,7 +82,8 @@ export function bookSlice() {
     resetInput('')
   }
 
-  const kill = ( id ) => {
+  const kill = ( id, event ) => {
+    event.stopPropagation()
     dispatch( killBookAction( id ) )
   }
 
