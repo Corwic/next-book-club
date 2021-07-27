@@ -14,12 +14,19 @@ export const commonSlice = createSlice({
 
 
 
-export const showDetails = ( id ) => {
-  const dispatch = useDispatch()
-  dispatch( toggleSideScreen( id ) )
-}
 
 
 export const { toggleSideScreen } = commonSlice.actions
+
+export function commonFunctions() {
+  const dispatch = useDispatch()
+
+  const toggleSideScreenFn = ( id ) => {
+    dispatch( toggleSideScreen( id ) )
+  }
+
+  return { toggleSideScreenFn }
+}
+
 
 export default commonSlice.reducer

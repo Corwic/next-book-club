@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { bookSlice } from './bookSlice'
 //import { showDetails } from '../common/commonSlice'
 import { useDispatch } from 'react-redux'
-import { toggleSideScreen } from '../common/commonSlice'
+import { commonFunctions } from '../common/commonSlice'
 
 
 const BookCardStyle = styled.div`
@@ -23,16 +23,17 @@ const BookCardStyle = styled.div`
 export function BookCard ({ data: book }) {
   const { kill } = bookSlice()
   const [ isFocused, setIsFocused ] = useState('')
-  const dispatch = useDispatch()
+  //const dispatch = useDispatch()
+  const { toggleSideScreenFn } = commonFunctions()
 
   const toggleSide = ( id ) => {
     console.log('isFocused=', isFocused, 'id', id);
     if ( isFocused === id ) {
-      dispatch( toggleSideScreen( '' ) )
+      /*dispatch(*/ toggleSideScreenFn( '' ) /*)*/
       setIsFocused( '' )
       return
     }
-    dispatch( toggleSideScreen( id ) )
+    /*dispatch(*/ toggleSideScreenFn( id ) /*)*/
     setIsFocused( id )
   }
 
