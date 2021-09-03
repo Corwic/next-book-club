@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
 import Router from 'next/router'
 import Head from 'next/head'
-import Layout from '../common/Layout'
-import List from '../common/List'
+import Layout from '../../common/Layout'
+import List from '../../common/List'
 
-import { Book, bookSlice } from '../books'
-import dbConnect from '../utils/dbConnect'
+import { Book, bookSlice } from '../../books'
+//import dbConnect from '../../utils/dbConnect'
 //import { connectToDatabase } from '../utils/mongodb'
 
 

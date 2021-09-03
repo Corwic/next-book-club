@@ -25,20 +25,20 @@ const NavBtn = styled.li`
 
 
 export default function Header() {
-  const { pathname } = useRouter()
-  //console.log( pathname );
+  const { pathname, query: { clubname } } = useRouter()
+
     return (
         <HeaderStyle>
-          <h1><Link href="/">BOOK CLUB ДОС(ТЛ)УГ</Link></h1>
+          <h1><Link href={`/${clubname}`}>BOOK CLUB ДОС(ТЛ)УГ</Link></h1>
           <nav>
             <ul>
               <NavBtn key="1" className="oo" active={pathname === '/books' ? 'active' : ''}>
-                <Link href="/books">
+                <Link href={`${clubname}/books`}>
                   Books
                 </Link>
               </NavBtn>
               <NavBtn key="2" active={pathname === '/readers' ? 'active' : ''}>
-                <Link href="/readers">
+                <Link href={`/${clubname}/readers`}>
                   Readers
                 </Link>
               </NavBtn>

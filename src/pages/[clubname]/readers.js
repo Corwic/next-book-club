@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import Router from 'next/router'
 import Head from 'next/head'
-import Layout from '../common/Layout'
-import List from '../common/List'
+import Layout from '../../common/Layout'
+import List from '../../common/List'
 
 import { unwrapResult } from '@reduxjs/toolkit'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { Reader, readerSlice, fetchReaders } from '../readers'
-import dbConnect from '../utils/dbConnect'
+import { Reader, readerSlice, fetchReaders } from '../../readers'
+//import dbConnect from '../utils/dbConnect'
 
 export default function Readers(/*{ readers }*/) {
   const { readers, loadReaders } = readerSlice()
