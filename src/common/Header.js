@@ -2,7 +2,7 @@ import React from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import styled from 'styled-components'
-
+import { getAuth, signOut } from "firebase/auth";
 
 const HeaderStyle = styled.header`
   ul {
@@ -19,21 +19,38 @@ const NavBtn = styled.li`
       font-weight: 600;
       letter-spacing: initial;
       ` : ''}
-
 `;
+const SignOut = styled.a`
+    cursor: pointer;
+`
 
 
 
 export default function Header() {
-  const { pathname, query: { clubname } } = useRouter()
+  const { push, pathname, query: { clubname } } = useRouter()
+  const auth = getAuth();
+
+  const signOutF = async () => {
+    try { 
+      await signOut(auth)
+      push('/signin')
+    } catch (e) {
+      console.log(e.message)
+    }
+  }
 
     return (
         <HeaderStyle>
-          <h1><Link href={`/${clubname}`}>BOOK CLUB ДОС(ТЛ)УГ</Link></h1>
+          <h1><Link href={`/${clubname ? clubname : null}`}>BOOK CLUB 
+          {
+          //clubname ? clubname : 'APP'
+          }
+          </Link></h1>
+
           <nav>
             <ul>
               <NavBtn key="1" className="oo" active={pathname === '/books' ? 'active' : ''}>
-                <Link href={`${clubname}/books`}>
+                <Link href={`/${clubname}/books`}>
                   Books
                 </Link>
               </NavBtn>
@@ -41,6 +58,11 @@ export default function Header() {
                 <Link href={`/${clubname}/readers`}>
                   Readers
                 </Link>
+              </NavBtn>
+              <NavBtn>
+                <SignOut onClick={signOutF}>
+                  Sign out
+                </SignOut>
               </NavBtn>
             </ul>
           </nav>

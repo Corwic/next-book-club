@@ -9,7 +9,6 @@ export default async function handler(req, res) {
 
   const key = process.env.GOODREADS_KEY
   const secret = process.env.GOODREADS_SECRET
-
   //await dbConnect()
   //switch (method) {
   //  case 'GET':

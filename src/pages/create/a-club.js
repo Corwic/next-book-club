@@ -16,7 +16,7 @@ const LoginButton = styled.button`
     }
 `
 
-export default function Login() {
+export default function CreateAClub() {
   const router = useRouter()
   const push = url => {router.push({pathname: url})}
 

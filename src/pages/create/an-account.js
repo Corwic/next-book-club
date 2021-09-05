@@ -16,7 +16,7 @@ const SignInButton = styled.button`
     }
 `
 
-export default function Login() {
+export default function CreateAnAccount() {
   const router = useRouter()
   const push = url => {router.push({pathname: url})}
 

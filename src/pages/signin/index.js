@@ -1,4 +1,10 @@
+// https://firebase.google.com/docs/auth/web/password-auth#web-version-9
+// https://firebase.google.com/docs/auth/web/email-link-auth?authuser=0
+
+
+import { useState } from 'react'
 import { useRouter } from 'next/router'
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import Head from 'next/head'
 import Layout from '../../common/Layout'
 import styled from 'styled-components'
@@ -16,9 +22,25 @@ const SignInButton = styled.button`
     }
 `
 
-export default function Login() {
+
+export default function SignInPage() {
+  const [emailValue, setEmailValue] = useState('')
+  const [passwordValue, setPasswordValue] = useState('')
+  const [signInError, setSignInError] = useState('')
+  const auth = getAuth()
   const router = useRouter()
   const push = url => {router.push({pathname: url})}
+
+  const onClickSignIn = async () => {
+    try {
+      setSignInError('')
+      const { user } = await signInWithEmailAndPassword(auth, emailValue, passwordValue)
+      console.log( 'user', user );
+      router.push('/demo')
+    } catch (e) {
+      setSignInError(e)
+    }
+  }
 
   return (
     <Layout>
@@ -26,8 +48,28 @@ export default function Login() {
         <title>Sign in — Book Club App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-    <h2>Choose a way to log in</h2>      
+    <h2>Choose a way to sign in</h2>
+    {signInError 
+      ? <div><p>{signInError.message}</p></div>
+      : null
+    }
     <ButtonsContainer>
+      <input 
+        type="text"
+        value={emailValue}
+        placeholder="Email address"
+        onChange={e => setEmailValue(e.target.value)} />
+      <input 
+        type="password"
+        value={passwordValue}
+        placeholder="Password"
+        onChange={e => setPasswordValue(e.target.value)} />
+      <button
+        onClick={onClickSignIn}>Sign in</button>
+    </ButtonsContainer>
+
+    <ButtonsContainer>
+        <p></p>
         <SignInButton className="disabled">Facebook</SignInButton>
         <SignInButton className="disabled">Google</SignInButton>
         <p></p>
