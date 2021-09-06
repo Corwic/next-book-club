@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router'
 import Head from 'next/head'
-import Layout from '../../common/Layout'
 import styled from 'styled-components'
 
 const ButtonsContainer = styled.div`
@@ -21,7 +20,7 @@ export default function Login() {
   const push = url => {router.push({pathname: url})}
 
   return (
-    <Layout>
+    <>
       <Head>
         <title>Sign in — Book Club App</title>
         <link rel="icon" href="/favicon.ico" />
@@ -34,6 +33,6 @@ export default function Login() {
             >Create a new club
         </SignInButton>
     </ButtonsContainer>
-    </Layout>
+    </>
   )
 }

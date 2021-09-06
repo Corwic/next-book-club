@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import Router from 'next/router'
 import Head from 'next/head'
-import Layout from '../../common/Layout'
 import List from '../../common/List'
+import { PrivateRouteCheck } from '../../auth'
 
 import { Book, bookSlice } from '../../books'
 //import dbConnect from '../../utils/dbConnect'
@@ -20,14 +20,15 @@ export default function Books( /*{ booksD } *//*{ booksData }*/ ) {
 
   //console.log('books page', books);
   return (
-    <Layout>
+    <PrivateRouteCheck>
       <Head>
         <title>BOOKS — Book Club App</title>
       </Head>
+
       <List data={ books } type="books" filter='reading' />
       <List data={ books } type="books" filter='toRead' input />
       <List data={ books } type="books" filter='read' />
-    </Layout>
+    </PrivateRouteCheck>
   )
 }
 

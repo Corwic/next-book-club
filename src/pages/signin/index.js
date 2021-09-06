@@ -6,7 +6,6 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import Head from 'next/head'
-import Layout from '../../common/Layout'
 import styled from 'styled-components'
 
 const ButtonsContainer = styled.div`
@@ -43,7 +42,7 @@ export default function SignInPage() {
   }
 
   return (
-    <Layout>
+    <>
       <Head>
         <title>Sign in — Book Club App</title>
         <link rel="icon" href="/favicon.ico" />
@@ -82,6 +81,6 @@ export default function SignInPage() {
         <button onClick={()=>push("/dostlug")}>DOS(tl)UG</button>
         <button onClick={()=>push("/demo")}>Demo Club</button>
     </ButtonsContainer>
-    </Layout>
+    </>
   )
 }

@@ -1,13 +1,16 @@
-import { route } from 'next/dist/next-server/server/router'
 import { useRouter } from 'next/router'
-import Layout from '../../common/Layout';
+import { PrivateRouteCheck } from '../../auth'
+import Head from 'next/dist/next-server/lib/head'
 
 
 export default function ClubNamePage() {
     const { query } = useRouter()
     return (
-        <Layout>
+        <PrivateRouteCheck>
+            <Head>
+                <title>{ query.clubname } Book Club</title>
+            </Head>
             <p>{ query.clubname }</p>
-        </Layout>
+        </PrivateRouteCheck>
     )
 }

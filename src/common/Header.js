@@ -1,8 +1,7 @@
-import React from 'react'
-import { useRouter } from 'next/router'
 import Link from 'next/link'
 import styled from 'styled-components'
-import { getAuth, signOut } from "firebase/auth";
+import { NavBar } from './NavBar' 
+import { useRouter } from 'next/router';
 
 const HeaderStyle = styled.header`
   ul {
@@ -12,60 +11,18 @@ const HeaderStyle = styled.header`
     padding: 0;
   }
 `;
-const NavBtn = styled.li`
-  letter-spacing: .02rem;
-  ${props => props?.active
-    ? `
-      font-weight: 600;
-      letter-spacing: initial;
-      ` : ''}
-`;
-const SignOut = styled.a`
-    cursor: pointer;
-`
-
 
 
 export default function Header() {
-  const { push, pathname, query: { clubname } } = useRouter()
-  const auth = getAuth();
-
-  const signOutF = async () => {
-    try { 
-      await signOut(auth)
-      push('/signin')
-    } catch (e) {
-      console.log(e.message)
-    }
-  }
+    const { query: {clubname} } = useRouter()
+    const name = `BOOK CLUB ` + (clubname ? clubname : 'APP')
 
     return (
         <HeaderStyle>
-          <h1><Link href={`/${clubname ? clubname : null}`}>BOOK CLUB 
-          {
-          //clubname ? clubname : 'APP'
-          }
+          <h1><Link href={`/`}>
+            {name}
           </Link></h1>
-
-          <nav>
-            <ul>
-              <NavBtn key="1" className="oo" active={pathname === '/books' ? 'active' : ''}>
-                <Link href={`/${clubname}/books`}>
-                  Books
-                </Link>
-              </NavBtn>
-              <NavBtn key="2" active={pathname === '/readers' ? 'active' : ''}>
-                <Link href={`/${clubname}/readers`}>
-                  Readers
-                </Link>
-              </NavBtn>
-              <NavBtn>
-                <SignOut onClick={signOutF}>
-                  Sign out
-                </SignOut>
-              </NavBtn>
-            </ul>
-          </nav>
+          <NavBar />
         </HeaderStyle>
     )
 }

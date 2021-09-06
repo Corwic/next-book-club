@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Router from 'next/router'
 import Head from 'next/head'
-import Layout from '../../common/Layout'
 import List from '../../common/List'
 
 import { unwrapResult } from '@reduxjs/toolkit'
@@ -26,12 +25,12 @@ export default function Readers(/*{ readers }*/) {
   }, [ addItem ])*/
 
   return (
-    <Layout>
+    <>
       <Head>
         <title>READERS — Book Club App</title>
       </Head>
       <List data={ readers } type="readers" input />
-    </Layout>
+    </>
   )
 }
 
