@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 import Header from './Header'
 import Footer from './Footer'
 import SideScreenContent from './SideScreenContent'
+
+import { useSelector, useDispatch } from 'react-redux'
 import { toggleSideScreen } from '../common/commonSlice'
 
 

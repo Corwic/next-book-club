@@ -1,7 +1,11 @@
 import Link from 'next/link'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
-import { getAuth, signOut } from "firebase/auth";
+
+import { getAuth, signOut } from "firebase/auth"
+import { useSelector, useDispatch } from 'react-redux'
+import { authSignIn, authSignOut } from '../common/commonSlice'
+
 
 const NavBtn = styled.li`
   letter-spacing: .02rem;
@@ -16,12 +20,16 @@ const SignOut = styled.a`
 `
 
 export const NavBar = () => {
+    const { authUser, authLoading } = useSelector( state => state.common )
     const { push, pathname, query: { clubname } } = useRouter()
     const auth = getAuth();
+    const dispatch = useDispatch()
+
 
     const signOutF = async () => {
         try { 
           await signOut(auth)
+          dispatch( authSignOut() )
           push('/signin')
         } catch (e) {
           console.log(e.message)

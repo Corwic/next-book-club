@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { PrivateRouteCheck } from '../auth'
+import Link from 'next/dist/client/link'
 
 // Here you would fetch and return the user
 
@@ -11,9 +11,9 @@ export default function Home() {
         <title>Book Club App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <PrivateRouteCheck />
       <div id='book-list'>
-        Welcome
+        <p>Welcome</p>
+        <Link href="/signin">Sign in</Link>
       </div>
     </>
   )
