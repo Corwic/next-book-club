@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { toggleSideScreen } from '../common/commonSlice'
 
 
-export default function Layout({ children }) {
+export const Layout = ({ children }) => {
   const { sideScreenContent, id } = useSelector( state => state.common )
   const dispatch = useDispatch()
   const [ isOpen, setIsOpen ] = useState( sideScreenContent )

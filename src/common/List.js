@@ -46,7 +46,7 @@ const conditions = {
 
 
 
-export default function List({
+export function List({
   data,
   type = 'books',
   filter = 'all',

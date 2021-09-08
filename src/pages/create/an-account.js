@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import styled from 'styled-components'
+import { Layout } from '../common'
+
 
 const ButtonsContainer = styled.div`
     display: grid;
@@ -20,7 +22,7 @@ export default function CreateAnAccount() {
   const push = url => {router.push({pathname: url})}
 
   return (
-    <>
+    <Layout>
       <Head>
         <title>Create an account — Book Club App</title>
         <link rel="icon" href="/favicon.ico" />
@@ -30,6 +32,6 @@ export default function CreateAnAccount() {
           <SignInButton className="disabled">Facebook</SignInButton>
           <SignInButton className="disabled">Google</SignInButton>
       </ButtonsContainer>
-    </>
+    </Layout>
   )
 }

@@ -9,7 +9,11 @@ const ReaderSchema = new mongoose.Schema({
   maxlength: [20, 'Name cannot be more than 60 characters'],
 },*/
     "name": { type: String },
-    "slug": { type: String },
+    "fullname": { type: String },
+    "displayname": { type: String },
+    "email": { type: String },
+    "id": { type: String },
+    "clubs": { type: Array },
     "reader_goodreads_id": { type: String }
 })
 

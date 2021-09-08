@@ -1,16 +1,22 @@
 import { useRouter } from 'next/router'
-import { PrivateRouteCheck } from '../../auth'
 import Head from 'next/dist/next-server/lib/head'
+import { Layout } from '../common'
+import { useUser } from '../../auth/useUser'
+
 
 
 export default function ClubNamePage() {
     const { query } = useRouter()
+    const { isLoading } = useUser()
+
+    if (isLoading) return <p>Loading...</p>
+
     return (
-        <PrivateRouteCheck>
+        <Layout>
             <Head>
                 <title>{ query.clubname } Book Club</title>
             </Head>
             <p>{ query.clubname }</p>
-        </PrivateRouteCheck>
+        </Layout>
     )
 }

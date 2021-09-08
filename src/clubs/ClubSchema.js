@@ -9,7 +9,10 @@ const ClubSchema = new mongoose.Schema({
   maxlength: [20, 'Name cannot be more than 60 characters'],
 },*/
     "title": { type: String },
-    "slug": { type: String }
+    "slug": { type: String },
+    "books": { type: Array },
+    "readers": { type: Array },
+    "admins": { type: Array },
 })
 
 export default mongoose.models.Club || mongoose.model('Club', ClubSchema)

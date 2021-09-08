@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import Router from 'next/router'
 import Head from 'next/head'
-import List from '../../common/List'
+import { Layout, List } from '../common'
 import { PrivateRouteCheck } from '../../auth'
 
 import { Book, bookSlice } from '../../books'
@@ -20,7 +20,7 @@ export default function Books( /*{ booksD } *//*{ booksData }*/ ) {
 
   //console.log('books page', books);
   return (
-    <PrivateRouteCheck>
+    <Layout>
       <Head>
         <title>BOOKS — Book Club App</title>
       </Head>
@@ -28,7 +28,7 @@ export default function Books( /*{ booksD } *//*{ booksData }*/ ) {
       <List data={ books } type="books" filter='reading' />
       <List data={ books } type="books" filter='toRead' input />
       <List data={ books } type="books" filter='read' />
-    </PrivateRouteCheck>
+    </Layout>
   )
 }
 
