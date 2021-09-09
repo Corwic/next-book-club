@@ -18,7 +18,7 @@ const SignInButton = styled.button`
     }
 `
 
-export default function Login({ clubs }) {
+export default function SelectClub({ clubs }) {
   const router = useRouter()
   const push = url => {router.push({pathname: url})}
 
@@ -35,7 +35,7 @@ export default function Login({ clubs }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
     <h2>Select a club</h2>
-    {clubs.length ? 
+    {clubs?.length ? 
       <ul>{clubs.map(club => 
         <li key={club.slug}
             onClick={() => selectClub(club)}>
@@ -56,9 +56,10 @@ export default function Login({ clubs }) {
 }
 
 
-export async function getStaticProps() {
+/* export async function getStaticProps({ params }) {
   //try {
-    const res = await axios('http://localhost:3003/api/clubs/')
+    console.log('context', params);
+    const res = await axios(`http://localhost:3003/api/clubs/`)
     const clubs = await res.data.data
   // } catch (e) {
   //   console.error(e)
@@ -69,4 +70,4 @@ export async function getStaticProps() {
       clubs,
     },
   };
-}
+} */

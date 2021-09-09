@@ -1,3 +1,3 @@
 //export { ClubCard } from './ClubCard'
 //export { clubsSlice } from './clubsSlice'
-export { ClubSchema } from './ClubSchema'
+export { default as Club } from './ClubSchema'

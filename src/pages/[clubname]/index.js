@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import Head from 'next/dist/next-server/lib/head'
-import { Layout } from '../common'
+import { Layout } from '../../common'
 import { useUser } from '../../auth/useUser'
 
 
