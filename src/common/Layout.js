@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { toggleSideScreen } from '../common/commonSlice'
 
 
-export const Layout = ({ children }) => {
+export const Layout = ({ children, isAuthed }) => {
   const { sideScreenContent, id } = useSelector( state => state.common )
   const dispatch = useDispatch()
   const [ isOpen, setIsOpen ] = useState( sideScreenContent )
@@ -26,7 +26,7 @@ export const Layout = ({ children }) => {
     <div className="wrapper">
       <div className="screen hiddenscreen"></div>
       <div className={'screen mainscreen' + ( isOpen ? ' show': '')}>
-        <Header />
+        <Header isAuthed={isAuthed}/>
           <main>
             {children}
           </main>

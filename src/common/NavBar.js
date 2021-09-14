@@ -19,26 +19,38 @@ const SignOut = styled.a`
     cursor: pointer;
 `
 
-export const NavBar = () => {
-    const { authUser, authLoading } = useSelector( state => state.common )
+export const NavBar = ({isAuthed}) => {
+    //const { authUser, authLoading } = useSelector( state => state.common )
     const { push, pathname, query: { clubname } } = useRouter()
     const auth = getAuth();
-    const dispatch = useDispatch()
+    //const dispatch = useDispatch()
 
 
     const signOutF = async () => {
         try { 
           await signOut(auth)
-          dispatch( authSignOut() )
-          push('/signin')
+          //dispatch( authSignOut() )
+          //push('/signin')
         } catch (e) {
           console.log(e.message)
         }
     }
 
-    console.log('auth.currentUser', auth.currentUser);
+    if (!isAuthed) return (
+        <nav>
+            <ul>
+            <NavBtn>
+                <SignOut onClick={signOutF}>
+                    <Link href={`/signin`}>
+                        Sign in
+                    </Link>
+                </SignOut>
+            </NavBtn>
+            </ul>
+        </nav> 
+    )
 
-    return (!auth.currentUser ? null :
+    return (
         <nav>
             <ul>
             <NavBtn key="1" className="oo" active={pathname === '/books' ? 'active' : ''}>

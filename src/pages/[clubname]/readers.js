@@ -16,14 +16,16 @@ export default function Readers(/*{ readers }*/) {
 
 
   return (
-    <Layout>
+    <>
       <Head>
         <title>READERS — Book Club App</title>
       </Head>
       <List data={ readers } type="readers" input />
-    </Layout>
+    </>
   )
 }
+
+Readers.isAuthed = isPageAuthed
 
 
 /*

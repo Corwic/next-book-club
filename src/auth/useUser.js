@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { getAuth } from 'firebase/auth'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
 
 export const useUser = () => {
     const auth = getAuth()
@@ -11,7 +11,9 @@ export const useUser = () => {
     })
 
     useEffect(() => {
-        return auth.onAuthStateChanged(user => {
+        return onAuthStateChanged(auth, (user) => {
+            if (user) console.log('useUser logged in') 
+            else console.log('useUser logged out');
             setUserInfo({ isLoading: false, user })
         })
     }, [])

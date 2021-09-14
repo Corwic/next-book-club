@@ -13,7 +13,7 @@ const HeaderStyle = styled.header`
 `;
 
 
-export default function Header() {
+export default function Header({ isAuthed }) {
     const { query: {clubname} } = useRouter()
     const name = `BOOK CLUB ` + (clubname ? clubname : 'APP')
 
@@ -22,7 +22,7 @@ export default function Header() {
           <h1><Link href={`/`}>
             {name}
           </Link></h1>
-          <NavBar />
+          <NavBar isAuthed={isAuthed}/>
         </HeaderStyle>
     )
 }

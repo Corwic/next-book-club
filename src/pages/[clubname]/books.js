@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react'
-import Router from 'next/router'
 import Head from 'next/head'
-import { Layout, List } from '../common'
-import { PrivateRouteCheck } from '../../auth'
+import { Layout, List } from '../../common'
+import { isPageAuthed } from '../../auth'
+
 
 import { Book, bookSlice } from '../../books'
 //import dbConnect from '../../utils/dbConnect'
 //import { connectToDatabase } from '../utils/mongodb'
 
 
-export default function Books( /*{ booksD } *//*{ booksData }*/ ) {
+export default function Books() {
   //const books = useSelector( state => state.books )
   const { books, loadBooks } = bookSlice()
   console.log('bookspage', books);
@@ -18,9 +18,8 @@ export default function Books( /*{ booksD } *//*{ booksData }*/ ) {
     loadBooks()
   }, [])
 
-  //console.log('books page', books);
   return (
-    <Layout>
+    <>
       <Head>
         <title>BOOKS — Book Club App</title>
       </Head>
@@ -28,9 +27,11 @@ export default function Books( /*{ booksD } *//*{ booksData }*/ ) {
       <List data={ books } type="books" filter='reading' />
       <List data={ books } type="books" filter='toRead' input />
       <List data={ books } type="books" filter='read' />
-    </Layout>
+    </>
   )
 }
+
+Books.isAuthed = isPageAuthed
 
 
 // mogoose way getServerSideProps

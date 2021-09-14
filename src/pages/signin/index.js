@@ -36,9 +36,10 @@ export default function SignInPage() {
   const push = url => {router.push({pathname: url})}
 
   useEffect(() => {
+    console.log('SignIn ');
     if ( clubs === '') return
     if ( clubs.length === 1) {
-      router.push(`/${reader.clubs[0].slug}`)
+      router.push(`/${clubs[0].slug}`)
     }
   }, [clubs])
 
@@ -58,50 +59,54 @@ export default function SignInPage() {
       {clubs?.length
         ? <SelectClub clubs={clubs} />
         : <>
-          <ButtonsContainer>
-            <input 
-              type="text"
-              value={emailValue}
-              placeholder="Email address"
-              onChange={e => setEmailValue(e.target.value)} />
-            <input 
-              type="password"
-              value={passwordValue}
-              placeholder="Password"
-              onChange={e => setPasswordValue(e.target.value)} />
-            <button
-              onClick={onSignIn}>Sign in</button>
-          </ButtonsContainer>
+            <ButtonsContainer>
+              <input 
+                type="text"
+                value={emailValue}
+                placeholder="Email address"
+                onChange={e => setEmailValue(e.target.value)} />
+              <input 
+                type="password"
+                value={passwordValue}
+                placeholder="Password"
+                onChange={e => setPasswordValue(e.target.value)} />
+              <button
+                onClick={onSignIn}>Sign in</button>
+            </ButtonsContainer>
 
-          <ButtonsContainer>
-              <p></p>
-              <SignInButton className="disabled">Facebook</SignInButton>
-              <SignInButton className="disabled">Google</SignInButton>
-              <p></p>
-              <SignInButton 
-                  className="disabled"
-                  onClick={()=>push("/create/an-account")}>
-                  Create an account
-              </SignInButton>
-              <p></p>
-              <button onClick={()=>push("/dostlug")}>DOS(tl)UG</button>
-              <button onClick={()=>push("/demo")}>Demo Club</button>
-          </ButtonsContainer>
+            <ButtonsContainer>
+                <p></p>
+                <SignInButton className="disabled">Facebook</SignInButton>
+                <SignInButton className="disabled">Google</SignInButton>
+                <p></p>
+                <SignInButton 
+                    className="disabled"
+                    onClick={()=>push("/create/an-account")}>
+                    Create an account
+                </SignInButton>
+                <p></p>
+                <button onClick={()=>push("/dostlug")}>DOS(tl)UG</button>
+                <button onClick={enterDemoClub}>Demo Club</button>
+            </ButtonsContainer>
           </>
       }
       
     </Layout>
   )
 
-  async function onSignIn() {
+  async function onSignIn(email = emailValue, password = passwordValue) {
     try {
-      const { user } = await signInWithEmailAndPassword(auth, emailValue, passwordValue)
+      const { user } = await signInWithEmailAndPassword(auth, email, password)
       const reader = await getReadersClubs(user.uid)
       console.log('reader', reader);
       setClubs(reader.clubs)
     } catch (e) {
       setSignInError(e)
     }
+  }
+
+  function enterDemoClub() {
+    onSignIn( process.env.NEXT_PUBLIC_DEMO_EMAIL, process.env.NEXT_PUBLIC_DEMO_PASS )
   }
 }
 
